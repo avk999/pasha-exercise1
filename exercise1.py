@@ -13,7 +13,7 @@ class PetManager:
             2. id is unique
         """
         result = Result()
-        existing_ids = set(filter(lambda x: x.id, self.zoo))
+        existing_ids = set(map(lambda x: x.id, self.zoo))
         if animal.id in existing_ids:
             result.success = False
             result.message = "Duplicate ID"
