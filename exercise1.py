@@ -75,19 +75,29 @@ if __name__ == "__main__":
     5) exit
     """
 
+w = """Welcome to Pet manager! Please, choose command:
+1 - add animal;
+2 - search for an animal;
+3 - list all animals;
+4 - delete an animal;
+5 - exit
+Enjoy!"""
+
+print(w)
+
 while True:
-    c = input("Command")
+    c = input("Enter command: ")
     try:
         command = int(c)
     except ValueError:
         print("Invalid command")
         command = 0
     if command == Commands.add:
-        id = int(input("id"))
-        name = input("name")
-        g = input("Gender (M/F)")
+        id = int(input("ID: "))
+        name = input("NAME: ")
+        g = input("Gender (M/F): ")
         gender_male = g == "M"
-        species = input("Species")
+        species = input("Species: ")
         animal = Animal(id, gender_male, name, species)
         result = mgr.add_animal(animal)
         if result.success:
@@ -97,6 +107,7 @@ while True:
 
     if command == Commands.list:
         pass
+        print(animal)
         # your code here
 
     # Other commands here
