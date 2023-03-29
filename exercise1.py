@@ -22,7 +22,7 @@ class PetManager:
     def add_animal(self, animal: Animal) -> Result:
         result = self._validate(animal)
         if result.success:
-            self.zoo.append(Animal)
+            self.zoo.append(animal)
         return result
 
     def list_animals(self, species: str = None, gender: bool = None) -> List[Animal]:
@@ -107,7 +107,10 @@ while True:
 
     if command == Commands.list:
         pass
-        print(animal)
+        print(self.zoo)
         # your code here
-
+    
+    if command == Commands.exit:
+        print("Goodbye!")
+        quit()
     # Other commands here
