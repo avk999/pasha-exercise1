@@ -31,6 +31,7 @@ class PetManager:
         animals with specified parameters
         """
         result = []
+        print (self.zoo)
         # Your code here
         return result
 
@@ -107,7 +108,7 @@ while True:
 
     if command == Commands.list:
         pass
-        print(self.zoo)
+        print(mgr.zoo)
         # your code here
     
     if command == Commands.exit:
