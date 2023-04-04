@@ -30,11 +30,10 @@ class PetManager:
         return list of animal objects, if "species"or "gender" are specified - return only
         animals with specified parameters
         """
-        result = []
-        print (self.zoo)
-        # Your code here
+        result = [self.zoo]
         return result
-
+        # return self.zoo
+    
     def get_animal(self, id: int = None, name: str = None) -> Tuple[Animal, Result]:
         """
         Return requested animal and search result.
@@ -49,6 +48,7 @@ class PetManager:
         pass
 
     def delete_animal(self, id: int) -> Result:
+        zoo.remove(d)
         """
         Delete from the list the animal with given id, if found.
         Return Result object with success=True if the animal deleted, else with success=False
@@ -107,11 +107,14 @@ while True:
             print(f"Error: {result.message}")
 
     if command == Commands.list:
-        pass
-        print(mgr.zoo)
-        # your code here
+        al=mgr.list_animals
+        print(al)
     
     if command == Commands.exit:
         print("Goodbye!")
         quit()
     # Other commands here
+    if command == Commands.delete:
+        d = input("Type animal's ID: ")
+        result = mgr.delete_animal(animal)
+        
