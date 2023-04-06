@@ -30,7 +30,7 @@ class PetManager:
         return list of animal objects, if "species"or "gender" are specified - return only
         animals with specified parameters
         """
-        result = [self.zoo]
+        result = self.zoo
         return result
         # return self.zoo
     
@@ -48,7 +48,7 @@ class PetManager:
         pass
 
     def delete_animal(self, id: int) -> Result:
-        zoo.remove(d)
+        
         """
         Delete from the list the animal with given id, if found.
         Return Result object with success=True if the animal deleted, else with success=False
@@ -107,7 +107,7 @@ while True:
             print(f"Error: {result.message}")
 
     if command == Commands.list:
-        al=mgr.list_animals
+        al=mgr.list_animals()
         print(al)
     
     if command == Commands.exit:
