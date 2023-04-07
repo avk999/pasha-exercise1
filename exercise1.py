@@ -115,8 +115,7 @@ while True:
             print(f"Error: {result.message}")
 
     if command == Commands.list:
-        pass
-        print(mgr.zoo)
+        print (mgr.list_animals())
         # your code here
     
     if command == Commands.exit:
