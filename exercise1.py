@@ -30,10 +30,18 @@ class PetManager:
         return list of animal objects, if "species"or "gender" are specified - return only
         animals with specified parameters
         """
-        result = []
-        print (self.zoo)
+        animals=self.zoo
+        if species:
+            animals=list(filter(lambda x: x.species==species, animals))
+        
+        if gender:
+            animals=list(filter(lambda x: x.gender==gender, animals))
+
+        return animals
+        # result = []
+        # print (self.zoo)
         # Your code here
-        return result
+        # return result
 
     def get_animal(self, id: int = None, name: str = None) -> Tuple[Animal, Result]:
         """
