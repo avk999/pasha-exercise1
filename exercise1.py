@@ -56,10 +56,10 @@ class PetManager:
         """
         pass
 
-    def delete_animal(self, id: int) -> Result:
+    def delete_animal(self, id: int, deleted = input()) -> Result:
     # def delete_animal(self, id: input()) -> Result:
-        zoo=list(filter(lambda x: x.id != deleted.id, zoo))
-        return zoo
+        self.zoo=list(filter(lambda x: x.id != deleted, self.zoo))
+        return self.zoo
         """
         Delete from the list the animal with given id, if found.
         Return Result object with success=True if the animal deleted, else with success=False
@@ -126,5 +126,6 @@ while True:
     # Other commands here
     if command == Commands.delete:
         print ("Input ID:")
-        de=mgr.delete_animal(id = input())
+        #de=mgr.delete_animal(deleted = input())
+        de=mgr.delete_animal(id=int, deleted=input())
         print(de)
