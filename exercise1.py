@@ -57,11 +57,13 @@ class PetManager:
         pass
 
     def delete_animal(self, id: int) -> Result:
+    # def delete_animal(self, id: input()) -> Result:
+        zoo=list(filter(lambda x: x.id != deleted.id, zoo))
+        return zoo
         """
         Delete from the list the animal with given id, if found.
         Return Result object with success=True if the animal deleted, else with success=False
         """
-        pass
 
 
 class Commands:
@@ -115,9 +117,14 @@ while True:
             print(f"Error: {result.message}")
 
     if command == Commands.list:
+        # al=mgr.list_animals(species != None) - Trying to insert values to method_list, but it doesn't work now.
         al=mgr.list_animals()
         print(al)
     if command == Commands.exit:
         print("Goodbye!")
         quit()
     # Other commands here
+    if command == Commands.delete:
+        print ("Input ID:")
+        de=mgr.delete_animal(id = input())
+        print(de)
