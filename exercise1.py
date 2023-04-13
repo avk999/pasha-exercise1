@@ -30,20 +30,17 @@ class PetManager:
         return list of animal objects, if "species"or "gender" are specified - return only
         animals with specified parameters
         """
-        animals=self.zoo
-        if species:
-            animals=list(filter(lambda x: x.species==species, animals))
+        animals=list(filter(lambda x: x.species==species or species == None, self.zoo))
         
-        if gender:
-            animals=list(filter(lambda x: x.gender==gender, animals))
+        result=list(filter(lambda x: x.gender_male==gender or gender == None, animals))
 
-        return animals
+        return result
         # result = []
         # print (self.zoo)
         # Your code here
         # return result
 
-    def get_animal(self, id: int = None, name: str = None) -> Tuple[Animal, Result]:
+    def get_animal(self, id: int = None, name: str = None) -> Animal:
         """
         Return requested animal and search result.
 
@@ -51,10 +48,9 @@ class PetManager:
         if id and name are passed - return the animal with given id and given name, if exists
         if only name is given - return the only animal with this name. If more then 1 animals
         have this name - fail.
-        The method should return tuple (Animal, Result) if search was successful, else
-        tuple (None, Result) with proper values set in result object
+        The method should return object of type Animal if search was successful or None.
         """
-        pass
+        return result
 
     def delete_animal(self, deleted: int) -> Result:
         self.zoo=list(filter(lambda x: x.id != deleted, self.zoo))
@@ -117,7 +113,17 @@ while True:
 
     if command == Commands.list:
         # al=mgr.list_animals(species != None) - Trying to insert values to method_list, but it doesn't work now.
-        al=mgr.list_animals()
+        g=input("Gender (M/F, empty for all)")# .strip()
+        # g M, F, ""
+        #True = M, False = F, None = ""
+        #gm= ....... 
+        print(f"DEBUG: gm={gm}")
+        sp=input("Species (empty for all): ")
+        sp=sp if sp != "" else None
+        print(f"DEBUG: sp={sp}")
+        
+        
+        al=mgr.list_animals(gender=gm, species=sp)
         print(al)
     if command == Commands.exit:
         print("Goodbye!")
