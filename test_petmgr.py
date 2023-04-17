@@ -1,6 +1,6 @@
 import pytest
 
-from exercise1 import PetManager
+from petmanager import PetManager
 from modules.datamodel import Animal
 
 
