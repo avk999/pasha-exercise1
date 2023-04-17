@@ -39,6 +39,21 @@ class PetManager:
         # return result
 
     def get_animal(self, id: int = None, name: str = None) -> Animal:
+        if id != None:
+            result=list(filter(lambda x: x.id == id, self.zoo))
+            
+    
+        if name != None:
+            result=list(filter(lambda x: x.name == name, self.zoo))
+
+            return result
+
+        """for i in self.zoo:   
+            if i == id:
+                print("YES")
+            else:
+                print("NO")"""
+        
         """
         Return requested animal and search result.
 
@@ -48,7 +63,7 @@ class PetManager:
         have this name - fail.
         The method should return object of type Animal if search was successful or None.
         """
-        return result
+        # return result
 
     def delete_animal(self, deleted: int) -> Result:
         self.zoo=list(filter(lambda x: x.id != deleted, self.zoo))
@@ -109,26 +124,32 @@ if __name__ == "__main__":
             else:
                 print(f"Error: {result.message}")
 
-        if command == Commands.list:
-            # al=mgr.list_animals(species != None) - Trying to insert values to method_list, but it doesn't work now.
-            g=input("Gender (M/F, empty for all)")# .strip()
-            # g M, F, ""
-            #True = M, False = F, None = ""
-            #gm= ....... 
-            print(f"DEBUG: gm={gm}")
-            sp=input("Species (empty for all): ")
-            sp=sp if sp != "" else None
-            print(f"DEBUG: sp={sp}")
-            
-            
-            al=mgr.list_animals(gender=gm, species=sp)
-            print(al)
-        if command == Commands.exit:
-            print("Goodbye!")
-            quit()
-        # Other commands here
-        if command == Commands.delete:
-            print ("Input ID:")
-            id_to_delete=int(input())
-            de=mgr.delete_animal(id_to_delete)
-            print(de)
+    if command == Commands.list:
+        # al=mgr.list_animals(species != None) - Trying to insert values to method_list, but it doesn't work now.
+        g=input("Gender (M/F, empty for all)")# .strip()
+        # g M, F, ""
+        #True = M, False = F, None = ""
+        #gm= ....... 
+        print(f"DEBUG: gm={gm}")
+        sp=input("Species (empty for all): ")
+        sp=sp if sp != "" else None
+        print(f"DEBUG: sp={sp}")
+        
+        
+        al=mgr.list_animals(gender=gm, species=sp)
+        print(al)
+    if command == Commands.exit:
+        print("Goodbye!")
+        quit()
+    # Other commands here
+    if command == Commands.delete:
+        print ("Input ID:")
+        id_to_delete=int(input())
+        de=mgr.delete_animal(id_to_delete)
+        print(de)
+
+    if command == Commands.search:
+        id_to_search=int(input("Inpui ID: "))
+        name_to_search=str(input("Input Name: "))
+        se=mgr.get_animal(id_to_search, name_to_search)
+        print(se)
