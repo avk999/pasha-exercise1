@@ -65,9 +65,10 @@ class PetManager:
         """
         # return result
 
-    def delete_animal(self, deleted: int) -> Result:
+    def delete_animal(self, deleted: int) -> bool:
+        orig_len=len(self.zoo)
         self.zoo=list(filter(lambda x: x.id != deleted, self.zoo))
-        return self.zoo
+        return  len(self.zoo) != orig_len
         """
         Delete from the list the animal with given id, if found.
         Return Result object with success=True if the animal deleted, else with success=False
